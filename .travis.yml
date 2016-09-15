@@ -1,41 +1,10 @@
 # Use new trusty images, should yield newer compilers and packages
-sudo: required
 dist: precise
 # Enable C++ support
-language: cpp
-# Compiler selection
-addons:
-  apt:
-    sources:
-    # add PPAs with more up-to-date toolchains
-    - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise-3.6
-    packages:
-    # install toolchains
-    - gcc-5
-    - g++-5
-    - clang-3.6
-matrix:
-  include:
-    - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-      env: COMPILER=g++-4.9
-    - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-      env: COMPILER=g++-5
+language: 
+   - cpp
 compiler:
-  - g++-5
+  - g++
 script:
-  - g++ --version
   - cd debug
   - make all
