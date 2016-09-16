@@ -1,9 +1,13 @@
 #include <iostream>
+#include <new>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 #include "../include/Process.h"
 #include "../include/Utils.h"
+#include "../include/FCFS.h"
+
 
 int main(int argc, char** argv) {
 	std::vector<Process> processes;
@@ -18,8 +22,11 @@ int main(int argc, char** argv) {
     	return 1;
     }
 
-    Utils::print(processes);
-    //call agorithms
+    FCFS* fcfs = new FCFS(processes);
+    fcfs->init();
 
+    std::cout << fcfs->getAverageResponse() << std::endl;
+
+    delete fcfs;
     return 0;
 }
