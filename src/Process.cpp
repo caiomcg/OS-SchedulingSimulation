@@ -1,12 +1,12 @@
 #include "../include/Process.h"
 
-Process::Process(unsigned int arrival, unsigned int span) : arrival(arrival), span(span){}
+Process::Process(unsigned int arrival, unsigned int span) : _arrival(arrival), _span(span){}
 Process::~Process(){}
 
-unsigned int Process::getArrivalTime() {
-	return arrival;
+unsigned int Process::getArrivalTime() const {
+	return _arrival;
 }
 
-unsigned int Process::getProcessSpan() {
-	return span;
+unsigned int Process::getProcessSpan() const {
+	return _span;
 }

@@ -3,14 +3,14 @@
 
 class Process {
 private:
-	unsigned int arrival;
-	unsigned int span;
+	unsigned int _arrival;
+	unsigned int _span;
 public:
 	Process(unsigned int arrival, unsigned int span);
 	~Process();
 
-	unsigned int getArrivalTime();
-	unsigned int getProcessSpan();
-}
+	unsigned int getArrivalTime() const;
+	unsigned int getProcessSpan() const;
+};
 
 #endif // PROCESS_H_
