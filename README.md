@@ -7,16 +7,14 @@
 A C++ simulation of FCFS(First-Come, First-Served), SJF(Short Job First) and RR(Round Robin) scheduling algorithms.
 
 ## Requirements ##
-------------------
 
 * C++ Compiler.
 
 ## Build Instructions ##
-------------------
 
-1. Clone the project.
-2. Move to the debug folder.
-3. Invoke the makefile.
+* Clone the project.
+* Move to the debug folder.
+* Invoke the makefile.
 
 ```
 git clone https://github.com/caiomcg/OS-SchedulingSimulation.git
