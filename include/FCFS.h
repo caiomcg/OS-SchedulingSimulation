@@ -11,9 +11,7 @@
 class FCFS {
 private:
 	std::vector<Process> _queue;
-
-	int _currentArrival;
-	int _cpuCycle;
+	
 	int _amountOfProcesses;
 
 	double _avgResponse;

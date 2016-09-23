@@ -1,6 +1,6 @@
 #include "../include/FCFS.h"
 
-FCFS::FCFS(std::vector<Process> processes) : _queue(processes), _currentArrival(0), _cpuCycle(0), _avgResponse(0), _avgReturn(0), _avgWait(0) {
+FCFS::FCFS(std::vector<Process> processes) : _queue(processes), _avgResponse(0), _avgReturn(0), _avgWait(0) {
 	_amountOfProcesses = processes.size();
 }
 
