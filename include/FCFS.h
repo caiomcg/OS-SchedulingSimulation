@@ -2,8 +2,10 @@
 #define FCFS_H_
 
 #include <vector>
-#include <algorithm>
-#include <iostream>
+#include <string>
+#include <sstream>
+#include <iomanip>
+
 #include "Process.h"
 
 class FCFS {
@@ -18,10 +20,7 @@ private:
 	double _avgReturn;
 	double _avgWait;
 
-	static bool sortPredicate(const Process& first, const Process& second);
-
 	void calculateAverageResponseTime();
-	void sortVector();
 	
 public:
 	FCFS(std::vector<Process> processes);
@@ -29,6 +28,8 @@ public:
 
 	void init();
 	double getAverageResponse();
+
+	std::string toString();
 };
 
 #endif // define FCFS

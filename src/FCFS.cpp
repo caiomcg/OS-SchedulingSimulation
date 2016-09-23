@@ -6,35 +6,28 @@ FCFS::FCFS(std::vector<Process> processes) : _queue(processes), _currentArrival(
 
 FCFS::~FCFS() {}
 
-bool FCFS::sortPredicate(const Process& first, const Process& second){ 
-	if (first.getArrivalTime() == second.getArrivalTime()) {
-		return first.getProgramCounter() > second.getProgramCounter();
-	}
-
-	return first.getArrivalTime() < second.getArrivalTime();
-}
-
-void FCFS::sortVector() {
-	std::sort(_queue.begin(), _queue.end(), FCFS::sortPredicate);
-}
-
 void FCFS::calculateAverageResponseTime() {
 	unsigned int sum = 0;
-	unsigned int temp = 0;
+	unsigned int clock = this->_queue[0].getArrivalTime();
 
-	for (int i = 0; i < this->_queue.size() - 1; i++) {
-		sum  += (this->_queue[i].getProcessSpan() + temp);
-		temp += this->_queue[i].getProcessSpan();
+	for (int i = 0; i < this->_queue.size(); i++) {
+		sum  += clock - this->_queue[i].getArrivalTime();
+		clock += this->_queue[i].getProcessSpan();
 	}
 
 	this->_avgResponse = sum / (double)this->_queue.size();
 }
 
 void FCFS::init() {
-	this->sortVector();
 	this->calculateAverageResponseTime();
 }
 
 double FCFS::getAverageResponse() {
 	return this->_avgResponse;
+}
+
+std::string FCFS::toString() {
+	std::stringstream ss;
+	ss << "FCFS " << std::fixed << std::setprecision(1) << _avgReturn << " " << _avgResponse << " " << _avgWait;
+	return ss.str();
 }

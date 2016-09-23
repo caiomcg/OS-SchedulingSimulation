@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     FCFS* fcfs = new FCFS(processes);
     fcfs->init();
 
-    std::cout << fcfs->getAverageResponse() << std::endl;
+    std::cout << fcfs->toString() << std::endl;
 
     delete fcfs;
     return 0;
