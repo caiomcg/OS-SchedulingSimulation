@@ -2,7 +2,6 @@
 #include <new>
 #include <vector>
 #include <fstream>
-#include <algorithm>
 
 #include "../include/Process.h"
 #include "../include/Utils.h"

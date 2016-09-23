@@ -20,14 +20,17 @@ private:
 	double _avgReturn;
 	double _avgWait;
 
-	void calculateAverageResponseTime();
+	void calculateAverageTime();
 	
 public:
 	FCFS(std::vector<Process> processes);
 	~FCFS();
 
 	void init();
+	
 	double getAverageResponse();
+	double getAverageReturn();
+	double getAverageWait();
 
 	std::string toString();
 };

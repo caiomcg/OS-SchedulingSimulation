@@ -6,24 +6,35 @@ FCFS::FCFS(std::vector<Process> processes) : _queue(processes), _currentArrival(
 
 FCFS::~FCFS() {}
 
-void FCFS::calculateAverageResponseTime() {
+void FCFS::calculateAverageTime() {
 	unsigned int sum = 0;
-	unsigned int clock = this->_queue[0].getArrivalTime();
+	unsigned int duration;
+	unsigned int clock = _queue[0].getArrivalTime();
 
-	for (int i = 0; i < this->_queue.size(); i++) {
-		sum  += clock - this->_queue[i].getArrivalTime();
-		clock += this->_queue[i].getProcessSpan();
+	for (int i = 0; i < _queue.size(); i++) {
+		sum  += clock - _queue[i].getArrivalTime();
+		clock += _queue[i].getProcessSpan();
+		duration += _queue[i].getProcessSpan();
 	}
-
-	this->_avgResponse = sum / (double)this->_queue.size();
+	_avgResponse = sum / (double)_queue.size();
+	_avgReturn   = duration / (double)_queue.size() + _avgResponse;
+	_avgWait     = _avgResponse; 
 }
 
 void FCFS::init() {
-	this->calculateAverageResponseTime();
+	this->calculateAverageTime();
 }
 
 double FCFS::getAverageResponse() {
 	return this->_avgResponse;
+}
+
+double FCFS::getAverageReturn() {
+	return this->_avgReturn;
+}
+
+double FCFS::getAverageWait() {
+	return this->_avgWait;
 }
 
 std::string FCFS::toString() {
