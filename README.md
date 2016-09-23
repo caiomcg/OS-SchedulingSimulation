@@ -17,7 +17,7 @@ A C++ simulation of FCFS(First-Come, First-Served), SJF(Short Job First) and RR(
 * Invoke the makefile.
 
 ```
-git clone https://github.com/caiomcg/OS-SchedulingSimulation.git
-cd debug
-make all
+$> git clone https://github.com/caiomcg/OS-SchedulingSimulation.git
+$> cd debug
+$> make all
 ```
