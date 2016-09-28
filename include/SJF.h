@@ -2,22 +2,27 @@
 #define SJF_H_
 
 #include <vector>
+#include <algorithm>
 #include <string>
 #include <sstream>
+#include <iostream>
 #include <iomanip>
 
 #include "Process.h"
+#include "Utils.h"
 
 class SJF{
 private:
 	std::vector<Process> _queue;
-	std::vector<Process> _tmpQueue;
 
 	int _amountOfProcesses;
 
 	double _avgResponse;
 	double _avgReturn;
 	double _avgWait;
+
+	static bool sortPredicate(const Process& first, const Process& second);
+ 	void sortVector();
 
 	void calculateAverageTime();
 public:

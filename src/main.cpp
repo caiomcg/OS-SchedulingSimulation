@@ -6,6 +6,7 @@
 #include "../include/Process.h"
 #include "../include/Utils.h"
 #include "../include/FCFS.h"
+#include "../include/SJF.h"
 
 
 int main(int argc, char** argv) {
@@ -22,10 +23,13 @@ int main(int argc, char** argv) {
     }
 
     FCFS* fcfs = new FCFS(processes);
+    SJF*  sjf  = new SJF(processes);
     fcfs->init();
+    sjf->init();
 
     std::cout << fcfs->toString() << std::endl;
 
     delete fcfs;
+    delete sjf;
     return 0;
 }
