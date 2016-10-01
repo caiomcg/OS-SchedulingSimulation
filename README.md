@@ -21,3 +21,13 @@ $> git clone https://github.com/caiomcg/OS-SchedulingSimulation.git
 $> cd debug
 $> make all
 ```
+
+## Execution Instructions ##
+
+* Move to the debug folder.
+* Run the created executable file and pipe a file to it.
+
+```
+$> cd debug
+$> ./main < file.in
+```
