@@ -4,13 +4,13 @@ Process::Process(unsigned int arrival, unsigned int span, unsigned int programCo
 Process::~Process(){}
 
 unsigned int Process::getArrivalTime() const {
-	return _arrival;
+	return _arrival; // Return the process arrival time
 }
 
 unsigned int Process::getProcessSpan() const {
-	return _span;
+	return _span; // Return the process time span.
 }
 
 unsigned int Process::getProgramCounter() const {
-	return _programCounter;
+	return _programCounter; // Return the process counter.
 }
