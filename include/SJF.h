@@ -14,6 +14,7 @@
 class SJF{
 private:
 	std::vector<Process> _queue;
+	std::vector<Process> _waiting;
 
 	int _amountOfProcesses;
 
@@ -22,7 +23,11 @@ private:
 	double _avgWait;
 
 	static bool sortPredicate(const Process& first, const Process& second);
- 	void sortVector();
+	static bool initialSortPredicate(const Process& first, const Process& second);
+	
+ 	void sortVector(std::vector<Process>& vector, unsigned int offset);
+
+ 	void removeFromVector(std::vector<Process>& vector, unsigned int distance);
 
 	void calculateAverageTime();
 public:

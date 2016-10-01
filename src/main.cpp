@@ -8,13 +8,14 @@
 #include "../include/FCFS.h"
 #include "../include/SJF.h"
 
-int main(int argc, char** argv) {
+int main(void) {
 	std::vector<Process> processes;
+
     unsigned int arrival        = 0;
     unsigned int span           = 0;
     unsigned int programCounter = 0;
 
-    while(std::cin >> arrival >>span) {
+    while (std::cin >> arrival >>span) {
         processes.push_back(Process(arrival, span, programCounter++));
     }
 
