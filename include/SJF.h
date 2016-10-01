@@ -117,19 +117,19 @@ public:
 	 * 
 	 * @return The average response time.
 	 */
-	double getAverageResponse();
+	double getAverageResponse() const;
 	/**
 	 * @brief Returns the average return time.
 	 * 
 	 * @return The average return time.
 	 */
-	double getAverageReturn();
+	double getAverageReturn() const;
 	/**
 	 * @brief Returns the average waiting time.
 	 * 
 	 * @return The average waiting time.
 	 */
-	double getAverageWait();
+	double getAverageWait() const;
 
 	/**
 	 * @brief Return a formatted string with the algorithm average time.
@@ -139,7 +139,7 @@ public:
 	 * 
 	 * @return A formatted string.
 	 */
-	std::string toString();
+	std::string toString() const;
 };
 
 #endif // define SJF

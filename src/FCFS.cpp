@@ -25,19 +25,19 @@ void FCFS::init() {
 	this->calculateAverageTime(); // Call the member function that runs the algorithm.
 }
 
-double FCFS::getAverageResponse() {
+double FCFS::getAverageResponse() const {
 	return this->_avgResponse; // Return the Average Response Time.
 }
 
-double FCFS::getAverageReturn() {
+double FCFS::getAverageReturn() const {
 	return this->_avgReturn; // Return the Average Return Time.
 }
 
-double FCFS::getAverageWait() {
+double FCFS::getAverageWait() const {
 	return this->_avgWait; // Return the Average Wait Time.
 }
 
-std::string FCFS::toString() {
+std::string FCFS::toString() const {
 	std::stringstream ss; // Creates a string stream.
 	ss << "FCFS " << std::fixed << std::setprecision(1) << _avgReturn << " " << _avgResponse << " " << _avgWait; // Format the string.
 	return ss.str(); // Return the strin.

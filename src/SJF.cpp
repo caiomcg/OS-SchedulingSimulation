@@ -74,19 +74,19 @@ void SJF::init() {
 	this->calculateAverageTime(); // Call the member function that runs the algorithm.
 }
 	
-double SJF::getAverageResponse() {
+double SJF::getAverageResponse() const {
 	return this->_avgResponse; // Return the Average Response Time
 }
 
-double SJF::getAverageReturn() {
+double SJF::getAverageReturn() const {
 	return this->_avgReturn; // Return the Average Return Time
 }
 
-double SJF::getAverageWait() {
+double SJF::getAverageWait() const {
 	return this->_avgWait; // Return the Average Wait Time
 }
 
-std::string SJF::toString() {
+std::string SJF::toString() const {
 	std::stringstream ss; // Creates a string stream.
 	ss << "SJF " << std::fixed << std::setprecision(1) << _avgReturn << " " << _avgResponse << " " << _avgWait; // Format the string.
 	return ss.str(); // Return the strin.
