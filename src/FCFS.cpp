@@ -26,15 +26,15 @@ void FCFS::init() {
 }
 
 double FCFS::getAverageResponse() {
-	return this->_avgResponse; // Return the Average Response Time
+	return this->_avgResponse; // Return the Average Response Time.
 }
 
 double FCFS::getAverageReturn() {
-	return this->_avgReturn; // Return the Average Return Time
+	return this->_avgReturn; // Return the Average Return Time.
 }
 
 double FCFS::getAverageWait() {
-	return this->_avgWait; // Return the Average Wait Time
+	return this->_avgWait; // Return the Average Wait Time.
 }
 
 std::string FCFS::toString() {
