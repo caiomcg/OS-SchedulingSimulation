@@ -88,6 +88,6 @@ double SJF::getAverageWait() const {
 
 std::string SJF::toString() const {
 	std::stringstream ss; // Creates a string stream.
-	ss << "SJF " << std::fixed << std::setprecision(1) << _avgReturn << " " << _avgResponse << " " << _avgWait; // Format the string.
+	ss << "SJF  " << std::fixed << std::setprecision(1) << _avgReturn << " " << _avgResponse << " " << _avgWait; // Format the string.
 	return ss.str(); // Return the strin.
 }

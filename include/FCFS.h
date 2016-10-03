@@ -21,6 +21,7 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <iostream>
 
 #include "Process.h"
 

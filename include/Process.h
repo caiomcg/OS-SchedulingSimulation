@@ -10,7 +10,6 @@
  * @author Caio Marcelo Campoy Guedes <caiomcg@gmail.com>
  */
 
-
 #ifndef PROCESS_H_
 #define PROCESS_H_
 
@@ -19,6 +18,7 @@ private:
 	unsigned int _arrival; /// Process arrival time.
 	unsigned int _span; /// Process time span.
 	unsigned int _programCounter; /// Process counter.
+	bool _run;
 public:
 	/**
 	 * @brief Class constructor.
@@ -48,11 +48,30 @@ public:
 	 */
 	unsigned int getProcessSpan() const;
 	/**
+	 * @brief Set the process time span.
+	 * 
+	 * @param int The time span.
+	 */
+	void setProcessSpan(const unsigned int span);
+	/**
 	 * @brief Returns the process counter.
 	 * 
 	 * @return The process counter.
 	 */
 	unsigned int getProgramCounter() const;
+	
+	/**
+	 * @brief Get if the process ran.
+	 * 
+	 * @return True if ran.
+	 */
+	bool getRun() const;
+	/**
+	 * @brief Set if process ran.
+	 * 
+	 * @param run The state of the process.
+	 */
+	void setRun(const bool run);
 };
 
 #endif // PROCESS_H_
