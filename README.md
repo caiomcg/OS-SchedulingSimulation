@@ -24,10 +24,26 @@ $> make all
 
 ## Execution Instructions ##
 
+### With a file ###
 * Move to the debug folder.
 * Run the created executable file and pipe a file to it.
 
 ```
 $> cd debug
 $> ./main < file.in
+```
+
+### Directly to the application ###
+* Move to the debug folder.
+* Run the created executable file and type the input.
+* Send EOF signal
+
+```
+$> cd debug
+$> ./main
+$> 0 20
+$> 0 10
+$> 4 6
+$> 4 8
+$> CTRL + D
 ```
