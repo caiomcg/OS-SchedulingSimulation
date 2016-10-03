@@ -30,7 +30,7 @@ $> make all
 
 ```
 $> cd debug
-$> ./main < file.in
+$> ./main < ../extra/example1.txt
 ```
 
 ### Directly to the application ###
