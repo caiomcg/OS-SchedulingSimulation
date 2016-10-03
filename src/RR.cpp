@@ -16,6 +16,7 @@ void RR::calculateAverageTime(){
 	unsigned int duration = 0; // Store the sum of the duration time for all processes.
 	unsigned int clock    = 0; // Store the current clock time.
 	unsigned int amountOfProcesses = _queue.size(); // The amount of process passed by the user.
+	unsigned int processRunning = 0; // Store the local time of process running.
 
 	for (int i = 0; i < _queue.size(); i++) { // Loops through the initial queue.
 		processRunning += _queue[i].getProcessSpan(); // Store the total time of process running
