@@ -20,6 +20,7 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <algorithm>
 
 #include "Process.h"
 #include "Utils.h"
