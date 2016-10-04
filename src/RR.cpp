@@ -14,7 +14,7 @@ void RR::calculateAverageTime(){
 	unsigned int running  = 0; // Store the current running process.
 	unsigned int pushed   = 0; // Store the amount of elements that were pushed to the new queue.
 	unsigned int duration = 0; // Store the sum of the duration time for all processes.
-	unsigned int clock    = 0; // Store the current clock time.
+	unsigned int clock    = _queue[0].getArrivalTime(); // Initiates the clock with the first process arrival time.; // Store the current clock time.
 	unsigned int amountOfProcesses = _queue.size(); // The amount of process passed by the user.
 	unsigned int processRunning = 0; // Store the local time of process running.
 
@@ -22,8 +22,38 @@ void RR::calculateAverageTime(){
 		processRunning += _queue[i].getProcessSpan(); // Store the total time of process running
 	}
 
-	while (!_queue.empty()) { // Runs until the queue is empty
-		clock   = _queue[0].getArrivalTime(); // Initiates the clock with the first process arrival time.
+	if (!_queue.empty()) { // Check if queue is empty
+		pushed = 0; // Resets the amount of pushed processes.
+
+		for (int i = 0; i < _queue.size(); i++) { // Loops through the initial queue.
+			if (_queue[i].getArrivalTime() <= clock) { // Check if the current process have the same arrival time as the clock.
+				_waiting.push_back(_queue[i]); //Push the process to the new queue.
+				pushed++; // Increments the amount of pushed elements.
+			} else {
+				break; // Stop pushing element.
+			}	
+		}
+
+		this->removeFromVector(_queue, pushed); // Remove the elements that were pushed from the main queue.
+	} else {
+		return; // Nothing to do
+	}
+
+	while (!_waiting.empty()) { // Loops until there are process on the queue.
+
+		if (_waiting[running].getRun()) { // Check if process already ran.
+			wait += clock - _waiting[running].getArrivalTime(); // Increments the waiting time for the processes.
+			_waiting[running].setRun(false); // Indicate that process already ran.
+		}
+
+		if (_waiting[running].getProcessSpan() < quantum) { // If the time that takes the process to run is lower than the quantum.
+			clock += _waiting[running].getProcessSpan(); // Update the clock with the remaining running time.
+			_waiting[running].setProcessSpan(0); // Finish the process.
+		} else {
+			clock += quantum; // Increments the clock with the value of the quantum.
+			_waiting[running].setProcessSpan(_waiting[running].getProcessSpan() - quantum); // Removes one quantum from the process.
+		}
+
 		pushed = 0; // Resets the amount of pushed processes.
 
 		for (int i = 0; i < _queue.size(); i++) { // Loops through the initial queue.
@@ -37,39 +67,11 @@ void RR::calculateAverageTime(){
 
 		this->removeFromVector(_queue, pushed); // Remove the elements that were pushed from the main queue.
 
-		while (!_waiting.empty()) { // Loops until there are process on the queue.
-			Process p = _waiting[running]; // Get the first element so we can process over it.
-			this->removeFromVector(_waiting, 1); // Removes the first element so we can process over it.
-
-			if (p.getRun()) { // Check if process already ran.
-				wait += clock - p.getArrivalTime(); // Increments the waiting time for the processes.
-				p.setRun(false); // Indicate that process already ran.
-			}
-
-			if (p.getProcessSpan() < quantum) { // If the time that takes the process to run is lower than the quantum.
-				clock += p.getProcessSpan(); // Update the clock with the remaining running time.
-				p.setProcessSpan(0); // Finish the process.
-			} else {
-				clock += quantum; // Increments the clock with the value of the quantum.
-				p.setProcessSpan(p.getProcessSpan() - quantum); // Removes one quantum from the process.
-			}
-
-			pushed = 0; // Resets the amount of pushed processes.
-			for (int i = 0; i < _queue.size(); i++) { // Loops through the initial queue.
-				if (_queue[i].getArrivalTime() <= clock) { // Check if the current process have the same arrival time as the clock.
-					_waiting.push_back(_queue[i]); //Push the process to the new queue.
-					pushed++; // Increments the amount of pushed elements.
-				} else {
-					break; // Stop pushing element.
-				}	
-			}
-			this->removeFromVector(_queue, pushed); // Remove the elements that were pushed from the main queue.
-
-			if (p.getProcessSpan() > 0) { // If there is still process to run.
-				_waiting.push_back(p); //Put the process on the back.
-			} else {
-				duration += clock - p.getArrivalTime(); // Store the duration of the processes.
-			}
+		if (_waiting[running].getProcessSpan() <= 0) { // If finished running
+			duration += clock - _waiting[running].getArrivalTime(); // Store the duration of the processes.
+			this->removeFromVector(_waiting, 1); // Remove from vector
+		} else {
+			std::rotate(_waiting.begin() + 0, _waiting.begin() + 0 + 1, _waiting.end()); //Move process to the end of the vector
 		}
 	}
 
